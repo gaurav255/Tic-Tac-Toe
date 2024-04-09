@@ -1,0 +1,28 @@
+<h1>Tic Tac Toe</h1>
+
+<% if flash[:notice] %>
+  <div><%= flash[:notice] %></div>
+<% elsif flash[:alert] %>
+  <div><%= flash[:alert] %></div>
+<% end %>
+
+<table>
+  <% @game.board.each_with_index do |row, row_index| %>
+    <tr>
+      <% row.each_with_index do |cell, col_index| %>
+        <td>
+          <% if cell.present? || @game.game_over? %>
+            <%= cell || "-" %> <!-- Show "-" or a better placeholder for empty cells when the game is over -->
+          <% else %>
+            <%= form_with(url: play_path, method: :post, local: true) do |form| %>
+              <%= hidden_field_tag :move, "#{row_index},#{col_index}" %>
+              <%= submit_tag('Play', class: 'btn') %>
+            <% end %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<%= button_to 'Reset Game', reset_path, method: :post %>
