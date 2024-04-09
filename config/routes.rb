@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root 'games#show'
+  root 'games#new'
   post 'play', to: 'games#play'
   post 'reset', to: 'games#reset'
   post 'setup', to: 'games#setup'
   post 'end_turn', to: 'games#end_turn'
-  # resources :games, only: [:show]
+  resources :games, only: [:index, :create]
 end

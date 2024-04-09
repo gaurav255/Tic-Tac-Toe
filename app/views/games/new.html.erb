@@ -1,0 +1,13 @@
+<h1>Enter Player Names</h1>
+
+<%= form_with(url: games_path, method: :post) do |form| %>
+  <div>
+    <%= label_tag :player1, "Player 1 Name (X)" %>
+    <%= text_field_tag :player1 %>
+  </div>
+  <div>
+    <%= label_tag :player2, "Player 2 Name (O)" %>
+    <%= text_field_tag :player2 %>
+  </div>
+  <%= submit_tag "Start Game" %>
+<% end %>

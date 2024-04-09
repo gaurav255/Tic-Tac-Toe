@@ -12,7 +12,7 @@
       <% row.each_with_index do |cell, col_index| %>
         <td>
           <% if cell.present? || @game.game_over? %>
-            <%= cell || "-" %> <!-- Show "-" or a better placeholder for empty cells when the game is over -->
+            <%= cell || "-" %>
           <% else %>
             <%= form_with(url: play_path, method: :post, local: true) do |form| %>
               <%= hidden_field_tag :move, "#{row_index},#{col_index}" %>

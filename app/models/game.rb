@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :board, :winner
+  attr_accessor :board, :winner, :player1, :player2
 
   def initialize(board = nil, winner = nil)
     @board = board || Array.new(3) { Array.new(3) }
@@ -9,7 +9,7 @@ class Game
   def make_move(row, col, player)
     return false if @board[row][col] || row.negative? || col.negative? || row > 2 || col > 2
     @board[row][col] = player
-    @winner = player if check_winner(player)
+    @winner = player if check_winner	(player)
     true
   end
 
